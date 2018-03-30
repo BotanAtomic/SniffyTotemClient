@@ -10,7 +10,7 @@ import com.pi4j.io.gpio.RaspiPin;
 public class Motor {
 
     public static void test() throws Exception {
-        System.out.println("V2");
+        System.out.println("V3");
         final GpioController gpio = GpioFactory.getInstance();
     }
 

@@ -7,22 +7,26 @@ import java.nio.ByteBuffer;
 public class UDPServer {
 
 
-    public void listen() throws Exception {
-        System.err.println("Waiting message");
-        while (true) {
-            DatagramSocket socket = new DatagramSocket(4445);
-            DatagramPacket packet = new DatagramPacket(new byte[Integer.SIZE * 2], Integer.SIZE * 2);
-            socket.receive(packet);
+    public void listen() {
+        try {
+            System.err.println("Waiting message");
+            while (true) {
+                DatagramSocket socket = new DatagramSocket(4445);
+                DatagramPacket packet = new DatagramPacket(new byte[Integer.SIZE * 2], Integer.SIZE * 2);
+                socket.receive(packet);
 
-            ByteBuffer byteBuffer = ByteBuffer.wrap(packet.getData());
+                ByteBuffer byteBuffer = ByteBuffer.wrap(packet.getData());
 
-            int sniffy = byteBuffer.getInt();
-            int sample = byteBuffer.getInt();
+                int sniffy = byteBuffer.getInt();
+                int sample = byteBuffer.getInt();
 
-            System.err.print("Sniffy : " + sniffy);
-            System.err.println(" / Sample : " + sample);
+                System.err.print("Sniffy : " + sniffy);
+                System.err.println(" / Sample : " + sample);
 
-            socket.close();
+                socket.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

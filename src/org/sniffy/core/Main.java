@@ -9,6 +9,8 @@ public class Main {
         new Thread(() -> new UDPServer().listen()).start();
 
         Motor.test();
+
+
     }
 
 }
